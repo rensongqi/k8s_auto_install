@@ -22,10 +22,11 @@ sudo chmod +x k8s_auto_install.sh
 
 ## 3. You need to select the type of network plug-in during installation
 
-**flannel version：**0.13.1
-**calico version：**3.17.0
 
 ```bash
+# flannel version:v0.13.1
+# calico version:v3.17.0
+
 ************************Network plugin install************************
 Please enter the network plugin you want to download [flannel|calico]: flannel
 Please wait a moment...
