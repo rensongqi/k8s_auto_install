@@ -22,20 +22,19 @@ sudo chmod +x k8s_auto_install.sh
 
 ## 3. You need to select the type of network plug-in during installation
 
-![image-20210113200440686](./imgs/20210113.png)
-
-
-
-## 4. Docker image registry
+**flannel version：**0.13.1
+**calico version：**3.17.0
 
 ```bash
-# Contains images related to K8S, Calico & Flannel
-registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/
+************************Network plugin install************************
+Please enter the network plugin you want to download [flannel|calico]: flannel
+Please wait a moment...
+
 ```
 
 
 
-## 5 Node join cluster
+## 4 Node join cluster
 
 ```bash
 # 1. Get token
@@ -46,6 +45,15 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outfor
 
 # 3. Node join k8s cluster
 kubeadm join 192.168.1.1:6443 --token ayhdt4.u83rp3re562iwvwu --discovery-token-ca-cert-hash sha256:1ff60a352c181ead103cb3f76fc328115bdb7e5c705d2348e8900df0ecec297e --ignore-preflight-errors=Swap
+```
+
+
+
+## 5. Docker image registry
+
+```bash
+# Contains images related to K8S, Calico & Flannel
+registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/
 ```
 
 
