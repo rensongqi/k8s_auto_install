@@ -22,7 +22,7 @@ sudo chmod +x k8s_auto_install.sh
 
 ## 3. You need to select the type of network plug-in during installation
 
-![image-20210113200440686](C:\Users\songqi\AppData\Roaming\Typora\typora-user-images\image-20210113200440686.png)
+![image-20210113200440686](./imgs/20210113.png)
 
 
 
