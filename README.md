@@ -1,4 +1,4 @@
-# K8s-v1.18.3 auto install in 5 min.
+# K8s-v1.18.3 auto install in for Centos7
 
 
 
