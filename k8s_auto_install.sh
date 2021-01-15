@@ -2,6 +2,17 @@
 # Author: Rensongqi
 # Email: cactirsq@163.com
 
+while :
+do
+    read -p "Please enter the network plugin you want to download [flannel|calico]: " name
+    if [ $name == "flannel" -o $name == "calico" ]
+    then
+        break
+    else
+        echo "Your input error, please enter [flannel|calico]"
+    fi
+done
+
 # step 1. copy repos & config hosts file
 \cp ./repos/* /etc/yum.repos.d/
 
@@ -59,32 +70,29 @@ for i in kube-apiserver:v1.18.3 kube-controller-manager:v1.18.3 kube-scheduler:v
 do
     docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/$i
 done
-
-while :
-do
-	echo ""
-	echo ""
-	echo "************************Network plugin install************************"
-    read -p "Please enter the network plugin you want to download [flannel|calico]: " name
-    if [ "$name" == "flannel" ]
-    then
-        echo "Please wait a moment..."
-        docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/flannel:v0.13.1-rc1
-        break
-    elif [ "$name" == "calico" ]
-    then
-        echo "Please wait a moment..."
-        docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/node:v3.8.2
-        docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/cni:v3.8.2
-        docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/kube-controllers:v3.8.2
-        docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/pod2daemon-flexvol:v3.8.2
-        break
-    else
-        echo "Your input error, please enter [flannel|calico]"
-    fi
-done
-
 echo ""
+echo ""
+
+echo "************************Network plugin install************************"
+if [ "$name" == "flannel" ]
+then
+    echo "Please wait a moment..."
+    docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/flannel:v0.13.1-rc1
+    break
+elif [ "$name" == "calico" ]
+then
+    echo "Please wait a moment..."
+    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/node:v3.8.2
+    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/cni:v3.8.2
+    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/kube-controllers:v3.8.2
+    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/pod2daemon-flexvol:v3.8.2
+    break
+else
+    echo "Your input error, please enter [flannel|calico]"
+fi
+echo ""
+echo ""
+
 echo "************************Change docker tag************************"
 if [ "$name" == "flannel" ]
 then
