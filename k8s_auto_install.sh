@@ -13,13 +13,15 @@ do
     fi
 done
 
-# step 1. copy repos & config hosts file
+# step 1. copy repos & config hosts file & change hostname
 \cp ./repos/* /etc/yum.repos.d/
 
 IP=`hostname -I | awk '{print $1}'`
 cat >>/etc/hosts<<EOF
 $IP master
 EOF
+
+hostnamectl set-hostname master
 
 # step 2. Close firewalld & selinux
 sudo systemctl stop firewalld
