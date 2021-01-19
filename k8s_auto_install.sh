@@ -84,13 +84,13 @@ then
 elif [ "$name" == "calico" ]
 then
     echo "Please wait a moment..."
-    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/node:v3.8.2
-    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/cni:v3.8.2
-    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/kube-controllers:v3.8.2
-    docker push registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/pod2daemon-flexvol:v3.8.2
+    docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/node:v3.8.2
+    docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/cni:v3.8.2
+    docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/kube-controllers:v3.8.2
+    docker pull registry.cn-shanghai.aliyuncs.com/rsq_k8s_images/pod2daemon-flexvol:v3.8.2
     break
 else
-    echo "Your input error, please enter [flannel|calico]"
+    echo "The network plugin you input dose not exist!"
 fi
 echo ""
 echo ""
