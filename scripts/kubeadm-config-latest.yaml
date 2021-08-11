@@ -10,14 +10,21 @@ dns:
 etcd:
   local:
     dataDir: /var/lib/etcd
-imageRepository:
+imageRepository: registry.aliyuncs.com/google_containers
 kind: ClusterConfiguration
-kubernetesVersion: v1.18.3
+kubernetesVersion: VERSION
 networking:
   dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
   podSubnet: 10.244.0.0/16
 ---
 apiVersion: kubeproxy.config.k8s.io/v1alpha1
+bootstrapTokens:
+- groups:
+  - system:bootstrappers:kubeadm:default-node-token
+  ttl: 48h0m0s
+  usages:
+  - signing
+  - authentication
 kind: KubeProxyConfiguration
 mode: ipvs
