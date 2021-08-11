@@ -5,7 +5,7 @@
 ## 1. Git clone
 
 ```bash
-git clone http://git.51vr.local/ivt_cloud/cloud_deploy.git
+git clone https://github.com/rensongqi/k8s_auto_install.git
 ```
 
 
